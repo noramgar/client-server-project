@@ -1,7 +1,9 @@
+import java.io.*;
+import java.net.*;
 import java.util.Scanner;
 
 public class Client {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, UnknownHostException {
 
         if (args.length != 1) {
             System.out.println("Error: user must enter server hostname as command line argument");
@@ -9,9 +11,13 @@ public class Client {
         }
 
         String serverHostname = args[0];
-
+        int portNumber = 4444;
         Scanner sc = new Scanner(System.in);
         
+        Socket clientSocket = new Socket(serverHostname, portNumber);
+        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
         while (true) {
             System.out.println();
             System.out.println("Commands:");
