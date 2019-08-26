@@ -11,10 +11,10 @@ public class Client {
         }
 
         String serverHostname = args[0];
-        int portNumber = 4444;
+        int serverPortNumber = 4444;
         Scanner sc = new Scanner(System.in);
         
-        Socket clientSocket = new Socket(serverHostname, portNumber);
+        Socket clientSocket = new Socket(serverHostname, serverPortNumber);
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
@@ -31,10 +31,14 @@ public class Client {
             System.out.println("7. Quit");
             System.out.println();
             System.out.print("Choose an option: ");
-            String input = sc.next();
-
-            if (input.equals("7"))
+            
+            String userInput = sc.next();
+            if (userInput.equals("7"))
                 break;
+            
+            out.println(userInput);
+            String response = in.readLine();
+            System.out.println("response: " + response);   
         }
     }
 }
