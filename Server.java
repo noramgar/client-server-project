@@ -37,8 +37,10 @@ public class Server {
                 processCommand = "free";
                 break;
             case 4:
+                processCommand = "netstat";
                 break;
             case 5:
+                processCommand = "who";
                 break;
             case 6:
                 break;
@@ -47,8 +49,6 @@ public class Server {
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(processCommand);
         BufferedReader commandResult = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        
-        StringBuilder response = new StringBuilder();
        
         String line = null;
         while ((line = commandResult.readLine()) != null) {
@@ -58,4 +58,5 @@ public class Server {
 
         out.println("end");
         System.out.println("end server response...");
+    }
 }
