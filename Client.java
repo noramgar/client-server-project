@@ -16,7 +16,7 @@ public class Client {
         
         Socket clientSocket = new Socket(serverHostname, serverPortNumber);
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        Scanner in = new Scanner(new BufferedReader(new InputStreamReader(clientSocket.getInputStream())));
 
         while (true) {
             System.out.println();
@@ -37,8 +37,15 @@ public class Client {
                 break;
             
             out.println(userInput);
-            String response = in.readLine();
-            System.out.println("response: " + response);   
+
+            StringBuilder response = new StringBuilder();
+            String line = null;
+            while ( !(line = in.nextLine()).equals("end"))  {
+                response.append(line + "\n");
+            }
+            
+            System.out.println("response:");
+            System.out.println(response.toString());   
         }
     }
 }

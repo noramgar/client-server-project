@@ -31,8 +31,10 @@ public class Server {
                 processCommand = "date";
                 break;
             case 2:
+                processCommand = "uptime";
                 break;
             case 3:
+                processCommand = "free";
                 break;
             case 4:
                 break;
@@ -46,9 +48,14 @@ public class Server {
         Process process = runtime.exec(processCommand);
         BufferedReader commandResult = new BufferedReader(new InputStreamReader(process.getInputStream()));
         
-        String s = null;
-        while ((s = commandResult.readLine()) != null) {
-            out.println(s);
+        StringBuilder response = new StringBuilder();
+       
+        String line = null;
+        while ((line = commandResult.readLine()) != null) {
+            out.println(line);
+            System.out.println(line);
         }
-    }
+
+        out.println("end");
+        System.out.println("end server response...");
 }
