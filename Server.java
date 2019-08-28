@@ -22,11 +22,13 @@ public class Server {
         }
     }
 
-    static void runCommand(int command, PrintWriter out) {
+    static void runCommand(int command, PrintWriter out) throws IOException {
+        
+        String processCommand = null;
+        
         switch (command) {
             case 1:
-                String dateAndTime = getDateAndTime();
-                out.println(dateAndTime);
+                processCommand = "date";
                 break;
             case 2:
                 break;
@@ -39,15 +41,14 @@ public class Server {
             case 6:
                 break;
         }
-    }
-
-    static String getDateAndTime() {
-        Date currentDate = new Date();
-        Locale currentLocale = new Locale("en", "US");
-        DateFormat timeFormatter = DateFormat.getTimeInstance(DateFormat.DEFAULT, currentLocale);
-        DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.DEFAULT, currentLocale);
-        String timeOutput = timeFormatter.format(currentDate);
-        String dateOutput = dateFormatter.format(currentDate);
-        return timeOutput + " - " + dateOutput;
+        
+        Runtime runtime = Runtime.getRuntime();
+        Process process = runtime.exec(processCommand);
+        BufferedReader commandResult = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        
+        String s = null;
+        while ((s = commandResult.readLine()) != null) {
+            out.println(s);
+        }
     }
 }
