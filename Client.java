@@ -32,12 +32,26 @@ public class Client {
             System.out.println();
             System.out.print("Choose an option: ");
             
-            String userInput = sc.next();
+            String userInput = sc.nextLine();
+            int commandNum = 0;
+
+            try {
+                commandNum = Integer.parseInt(userInput);
+            } catch (NumberFormatException e) {
+
+            } finally {
+                if (commandNum >= 1 && commandNum <= 7) {
+                    out.println(commandNum);
+                }
+                else {
+                    System.out.println("Error: invalid command");
+                    continue;
+                }
+            }
+
             if (userInput.equals("7"))
                 break;
             
-            out.println(userInput);
-
             StringBuilder response = new StringBuilder();
             String line = null;
             while ( !(line = in.nextLine()).equals("end"))  {
