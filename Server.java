@@ -1,7 +1,6 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import java.text.DateFormat;
 
 public class Server {
     public static void main(String[] args) throws IOException {
@@ -16,8 +15,6 @@ public class Server {
 
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
-            //out.println("Server sends back " + inputLine);
-
             runCommand(Integer.parseInt(inputLine), out);
         }
     }
@@ -43,6 +40,7 @@ public class Server {
                 processCommand = "who";
                 break;
             case 6:
+                processCommand = "ps -e";
                 break;
         }
         
@@ -53,10 +51,7 @@ public class Server {
         String line = null;
         while ((line = commandResult.readLine()) != null) {
             out.println(line);
-            System.out.println(line);
         }
-
         out.println("end");
-        System.out.println("end server response...");
     }
 }
