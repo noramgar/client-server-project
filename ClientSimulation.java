@@ -43,17 +43,3 @@ public class ClientSimulation {
         System.out.println(Arrays.toString(responseTimes));
     }
 }
-
-class ClientThread extends Thread {
-    long time;
-    int command;
-
-    public void run() {
-        long startTime = System.currentTimeMillis();
-        String s = "";
-        for(int i = 0; i < 130; i++)
-            s += "ayyyy";
-        long endTime = System.currentTimeMillis();
-        time = endTime - startTime;
-    }
-}
