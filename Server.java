@@ -42,6 +42,8 @@ public class Server {
             case 6:
                 processCommand = "ps -e";
                 break;
+            case 7:
+                return;
         }
         
         Runtime runtime = Runtime.getRuntime();
