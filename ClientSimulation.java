@@ -26,6 +26,7 @@ public class ClientSimulation {
 
         for (int i = 0; i < clientCount; i++) {
             clients[i] = new ClientThread();
+            clients[i].command = command;
         }
 
         for (ClientThread thread: clients) {
