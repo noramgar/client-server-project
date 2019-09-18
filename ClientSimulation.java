@@ -5,18 +5,20 @@ public class ClientSimulation {
         int[] clientCounts = new int[]{1, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
 
 
-        System.out.println("light load response times");
-        // light load (date/time command)
-        for (int count: clientCounts) {
-            runClients(count, 1);
-        }
+        // System.out.println("light load response times");
+        // // light load (date/time command)
+        // for (int count: clientCounts) {
+        //     runClients(count, 1);
+        // }
 
-        System.out.println("heavy load response times");
-        // heavy load (date/time command)
-        for (int count: clientCounts) {
-            runClients(count, 4);
-        }
+        // System.out.println("heavy load response times");
+        // // heavy load (date/time command)
+        // for (int count: clientCounts) {
+        //     runClients(count, 4);
+        // }
 
+        runClients(3, 1);
+        //runClients(10, 4);
         
     }
 

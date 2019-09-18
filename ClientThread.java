@@ -19,10 +19,11 @@ public class ClientThread extends Thread {
         
         Scanner in = null;
         Socket clientSocket = null;
+        PrintWriter out = null;
 
         try {
             clientSocket = new Socket(serverHostname, serverPortNumber);
-            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+            out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new Scanner(new BufferedReader(new InputStreamReader(clientSocket.getInputStream())));
             out.println(command);
         } catch (Exception e) {
@@ -30,18 +31,18 @@ public class ClientThread extends Thread {
         }
 
         StringBuilder response = new StringBuilder();
+
         String line = null;
-        while (!(line = in.nextLine()).equals("end")) {
+        while (in.hasNextLine()) {
+            line = in.nextLine();
+            if (line.equals("end")) break;
+
             response.append(line + "\n");
         }
 
-        System.out.println(response);
+        System.out.println(response.toString());
 
-        try {
-            clientSocket.close();
-        } catch (IOException e) {
-
-        }
-        
+        out.close();
+        in.close();
     }
 }
