@@ -17,8 +17,8 @@ public class ClientSimulation {
         //     runClients(count, 4);
         // }
 
-        runClients(3, 1);
-        //runClients(10, 4);
+        runClients(10, 1);
+        runClients(10, 4);
         
     }
 

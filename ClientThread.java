@@ -40,7 +40,7 @@ public class ClientThread extends Thread {
             response.append(line + "\n");
         }
 
-        System.out.println(response.toString());
+        //System.out.println(response.toString());
 
         out.close();
         in.close();
