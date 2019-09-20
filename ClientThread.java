@@ -3,7 +3,7 @@ import java.net.*;
 import java.util.Scanner;
 
 public class ClientThread extends Thread {
-    long time = -1;
+    long time;
     int command;
 
     public void run() {
@@ -39,9 +39,7 @@ public class ClientThread extends Thread {
 
             response.append(line + "\n");
         }
-
-        //System.out.println(response.toString());
-
+        
         out.close();
         in.close();
     }
