@@ -58,7 +58,7 @@ public class Client {
                 response.append(line + "\n");
             }
             
-            System.out.println("response:");
+            System.out.println();
             System.out.println(response.toString());   
         }
     }
