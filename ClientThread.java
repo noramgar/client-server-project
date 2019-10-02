@@ -35,7 +35,8 @@ public class ClientThread extends Thread {
         String line = null;
         while (in.hasNextLine()) {
             line = in.nextLine();
-            if (line.equals("end")) break;
+            if (line.equals("end")) 
+                break;
 
             response.append(line + "\n");
         }

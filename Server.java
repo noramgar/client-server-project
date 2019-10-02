@@ -14,9 +14,8 @@ public class Server {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
             String inputLine;
-            while ((inputLine = in.readLine()) != null) {
+            while ((inputLine = in.readLine()) != null)
                 runCommand(Integer.parseInt(inputLine), out);
-            }
         }
     }
 
@@ -52,9 +51,9 @@ public class Server {
         BufferedReader commandResult = new BufferedReader(new InputStreamReader(process.getInputStream()));
        
         String line = null;
-        while ((line = commandResult.readLine()) != null) {
+        while ((line = commandResult.readLine()) != null)
             out.println(line);
-        }
+
         out.println("end");
     }
 }

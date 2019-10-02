@@ -54,9 +54,9 @@ public class Client {
             
             StringBuilder response = new StringBuilder();
             String line = null;
-            while ( !(line = in.nextLine()).equals("end")) {
+            
+            while ( !(line = in.nextLine()).equals("end"))
                 response.append(line + "\n");
-            }
             
             System.out.println();
             System.out.println(response.toString());   

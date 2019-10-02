@@ -6,21 +6,20 @@ public class ClientSimulation {
 
         System.out.println("light load response times");
         System.out.println("--------------------------");
+
         // light load (date/time command)
-        for (int count: clientCounts) {
+        for (int count: clientCounts)
             runClients(count, 1);
-        }
+
         System.out.println();
         System.out.println("heavy load response times");
         System.out.println("--------------------------");
+
         // heavy load (date/time command)
-        for (int count: clientCounts) {
+        for (int count: clientCounts)
             runClients(count, 4);
-        }
+
         System.out.println();
-        // runClients(4, 1);
-        // runClients(4, 3);
-        
     }
 
     static void runClients(int clientCount, int command) throws InterruptedException {
@@ -32,24 +31,18 @@ public class ClientSimulation {
             clients[i].command = command;
         }
 
-        for (ClientThread thread: clients) {
+        for (ClientThread thread: clients)
             thread.start();
-        }
 
-        for (ClientThread thread: clients) {
+        for (ClientThread thread: clients)
             thread.join();
-        }
 
-        for (int i = 0; i < clientCount; i++) {
+        for (int i = 0; i < clientCount; i++)
             responseTimes[i] = clients[i].time;
-        }
-
-        //System.out.println(Arrays.toString(responseTimes));
 
         long totalResponseTime = 0;
-        for(long time: responseTimes) {
+        for(long time: responseTimes)
             totalResponseTime += time;
-        }
 
         System.out.printf("%3d clients: %d ms\n", clientCount, totalResponseTime/clientCount);
     }
