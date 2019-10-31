@@ -14,7 +14,7 @@ public class ClientThread extends Thread {
     }
 
     private void processRequest() {
-        String serverHostname = "192.168.101.103";
+        String serverHostname = "localhost"; //"192.168.101.103";
         int serverPortNumber = 4444;
         
         Scanner in = null;
