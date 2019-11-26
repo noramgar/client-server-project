@@ -16,6 +16,9 @@ public class Server {
             String inputLine;
             while ((inputLine = in.readLine()) != null)
                 runCommand(Integer.parseInt(inputLine), out);
+                
+            in.close();
+            out.close();
         }
     }
 

@@ -4,6 +4,10 @@ public class ClientSimulation {
     public static void main(String[] args) throws InterruptedException {
         int[] clientCounts = new int[]{1, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
 
+        for (int count: clientCounts)
+            runClients(count, 1);
+
+        System.out.println("\n\n\n\n\n\n\n\n\n\n");
         System.out.println("light load response times");
         System.out.println("--------------------------");
 

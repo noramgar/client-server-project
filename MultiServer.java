@@ -12,5 +12,7 @@ public class MultiServer {
             Socket clientSocket = serverSocket.accept();  
             new MultiServerThread(clientSocket).start();
         }
+
+        serverSocket.close();
     }
 }

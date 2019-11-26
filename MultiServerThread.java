@@ -17,6 +17,10 @@ public class MultiServerThread extends Thread {
             String inputLine;
             while ((inputLine = in.readLine()) != null)
                 runCommand(Integer.parseInt(inputLine), out);
+            
+            out.close();
+            in.close();
+            clientSocket.close();
         }
         catch (IOException e) {}
     }

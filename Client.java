@@ -59,7 +59,12 @@ public class Client {
                 response.append(line + "\n");
             
             System.out.println();
-            System.out.println(response.toString());   
+            System.out.println(response.toString());
         }
+
+        sc.close();
+        in.close();
+        out.close();
+        clientSocket.close();
     }
 }
